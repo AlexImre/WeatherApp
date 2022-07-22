@@ -1,0 +1,258 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+}
+
+body{
+    background-color:white;
+    /* linear-gradient(120deg, #293a41, #a9b3ae); */
+    color: white;
+    font-family: 'roboto', sans-serif;
+    text-align: center;
+}
+
+#pageContainer{
+    display:flex;
+}
+
+#appContainer{
+    min-width: 650px;
+}
+
+#forecastContainer, #coordinatesContainer{
+    background-color: white;
+    color:#42a5f5;
+    padding: 1rem 1rem 0 1rem;
+    min-height: 6rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchBox{
+    background-color: #192225;
+    min-width: 50rem;
+    max-width: 100rem;
+    min-height: 10rem;
+    justify-content: center;
+}
+
+#cityName{
+    margin: 1rem 1rem 0rem 1rem;
+    min-width: 30rem;
+    min-height: 100rem;
+}
+
+#popularLocationsContainer{
+    background-color:white;
+    padding: 0;
+    margin: 0px;
+}
+
+#popularLocationsHeader{
+    margin: 0;
+    padding-top: 1rem;
+    color: #e3403a;
+}
+
+#citiesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#latitude, #longitude{
+    margin: 1rem;
+}
+
+#latitude, #longitude, #cityName{
+    min-height: 1.5rem;
+}
+
+#submit, #citySubmit{
+    min-height: 2rem;
+}
+
+.popularLocations{
+    min-width: 7.5rem;
+    min-height: 2.5rem;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+#header{
+    margin: 0;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    background-color: #42a5f5;
+}
+
+#weatherInfo{
+    color: #2ecc71;
+    padding-top: 10px;
+}
+
+#results{
+    background-color: #2ecc71;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.clear{
+    margin: 1rem;
+}
+
+#unsplashImage{
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+  /* BUTTON STYLING */
+
+  /* FIND BUTTON */
+.button-16 {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    cursor: pointer;
+    font-family: arial,sans-serif;
+    font-size: 14px;
+    height: 36px;
+    line-height: 27px;
+    min-width: 54px;
+    padding: 0 16px;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: pre;
+}
+  
+.button-16:hover {
+    border-color: #dadce0;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 1px;
+    color: #202124;
+}
+  
+.button-16:focus {
+    border-color: #4285f4;
+    outline: none;
+}
+
+/* CLEAR BUTTON */
+.buttonClear {
+    align-items: center;
+    background-color: #2ecc71;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 100px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+  
+.buttonClear:hover,
+.buttonClear:focus { 
+    background-color: #16437E;
+    color: #ffffff;
+}
+  
+.buttonClear:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+}
+  
+.buttonClear:disabled { 
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+  /* CITIES BUTTON */
+.button-18 {
+    align-items: center;
+    background-color: #42a5f5;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 100px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+  
+.button-18:hover,
+.button-18:focus { 
+    background-color: #16437E;
+    color: #ffffff;
+}
+  
+.button-18:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+}
+  
+.button-18:disabled { 
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+
+/* FORM STYLING */
+
+.formStyle{
+padding: 6px 12px;
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5;
+color: #212529;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+appearance: none;
+border-radius: 4px;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.formStyle:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div id="pageContainer">
+    <div id="appContainer">
+    <h1 id="header">Weather App</h1>
+    <hr>
+    <div id="forecastContainer">
+        <h2>Find a forecast</h2>
+        <input class ="formStyle" type="tex1t" id="cityName" placeholder="Enter City">
+        <input type="button" class="button-16" id="citySubmit" value="Find" onsubmit="return false">
+    </div>
+
+    <!-- <div id="coordinatesContainer"> 
+        <h2>Search by coordinates</h2>
+        <input type="number" class ="formStyle" id="latitude" placeholder="Enter latitude">
+        <input type="number" class ="formStyle" id="longitude" placeholder="Enter longitude">
+        <input type="button" class = "button-16" id="submit" value="Find" onsubmit="return false">
+    </div> -->
+
+    <div id="popularLocationsContainer">
+        <div id="citiesContainer">
+            <div id="london">
+                <input type="button" class="popularLocations button-18" id="getLondonData" value="London" onsubmit="return false">
+            </div>
+            <div id="newYork">
+                <input type="button" class="popularLocations button-18" id="getNewYorkData" value="New York" onsubmit="return false">
+            </div>
+            <div id="paris">
+                <input type="button" class="popularLocations button-18" id="getParisData" value="Paris" onsubmit="return false">
+            </div>
+            <div id="gdansk">
+                <input type="button" class="popularLocations button-18" id="getGdanskData" value="Gdansk" onsubmit="return false">
+            </div>
+        </div>
+    </div>
+
+    <div id="results">
+        <h1>Results</h1>
+    </div>
+
+    <div id="weatherInfo">   
+
+    </div>
+
+    <div class="clear">
+        <input class="buttonClear" type="button" id="clear" value="Clear">
+    </div>
+
+ 
+    </div>
+    <div id="unsplashImage">
+    </div>  
+
+    <!-- what does type=module do? -->
+    <script type="module" src="main.js"></script>
+</div>
+
+</body>
+</html>
