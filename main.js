@@ -5,6 +5,10 @@ const unsplashKey = "jGhREgywG0IpL5j5V2zHDpVRB-6eqJRdZDsOWONRM0M";
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 const units = "metric"; 
 
+
+
+asdasd
+
 // Retrieve user inputted city
 const getCity = () => {
     const city = document.getElementById("cityName").value;
