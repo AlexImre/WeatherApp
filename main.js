@@ -9,6 +9,8 @@ const units = "metric";
 
 asdasd
 
+Why is this not worknig;
+
 // Retrieve user inputted city
 const getCity = () => {
     const city = document.getElementById("cityName").value;
