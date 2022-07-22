@@ -11,6 +11,8 @@ asdasd
 
 Why is this not worknig;
 
+testing a third Time
+
 // Retrieve user inputted city
 const getCity = () => {
     const city = document.getElementById("cityName").value;
