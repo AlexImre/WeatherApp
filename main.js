@@ -13,6 +13,8 @@ Why is this not worknig;
 
 testing a third Time
 
+testing a fourth time
+
 // Retrieve user inputted city
 const getCity = () => {
     const city = document.getElementById("cityName").value;
