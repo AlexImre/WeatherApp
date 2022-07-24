@@ -4,30 +4,13 @@ const apiKey = "9faac331824276bce93600720a88aff1";
 const unsplashKey = "jGhREgywG0IpL5j5V2zHDpVRB-6eqJRdZDsOWONRM0M";
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 const units = "metric"; 
-
-
-
-asdasd
-
-Why is this not worknig;
-
-testing a third Time
-
-testing a fourth time
-
-// Retrieve user inputted city
-const getCity = () => {
-    const city = document.getElementById("cityName").value;
-    return city;
-}
+const FIND_WEATHER_BUTTON = document.getElementById("citySubmit");
 
 // Get random image based on city
-const getImage = async() => {
-    const city = await getCity();
+const getImage = async(city) => {
     const unsplashURL = "https://api.unsplash.com/photos/random";
     const requestParams = `?client_id=${unsplashKey}&query=${city}&orientation=${"landscape"}`;
     const apiCall = `${unsplashURL}${requestParams}`;
-    console.log("working 1");
     try{
         const response = await fetch(apiCall);
         if(response.ok){
@@ -45,36 +28,22 @@ const getImage = async() => {
 
 // Get weather from city
 const getWeatherCity = async() => {
-    const city = getCity();
+    const city = document.getElementById("cityName").value;
     const requestParams = `?q=${city}&appid=${apiKey}&units=${units}`;
     const apiCall = `${baseUrl}${requestParams}`;
     try {
         const response = await fetch(apiCall);
+        console.log(response);
         if(response.ok){
             const cityWeatherJSON = await response.json();
             return cityWeatherJSON;
         }
+        if(response.status === 404){
+            alert("Enter valid City");
+        };
         throw new Error("something went wrong");
     } catch (error){
         console.log(error);
-    }
-}
-
-// Get weather from coordinates
-const getWeather = async() => {
-    const arrayOfCoordinates = getCoordinates();
-    let latitude = arrayOfCoordinates[0];
-    let longitude = arrayOfCoordinates[1];
-    const requestParams = `?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-    const apiCall = `${baseUrl}${requestParams}`;
-    try {
-        const response = await fetch(apiCall);
-        if(response.ok){
-            const responseJSON = await response.json();
-            return responseJSON;
-        }
-    } catch (error){
-        console.log(`Error message: ${error}`);
     }
 }
 
@@ -137,13 +106,13 @@ const displayWeatherCity = async() => {
     
     // Set background image
     const unsplashImageDiv = document.getElementById("unsplashImage");
-    const unsplashImageURL = await getImage();
+    const unsplashImageURL = await getImage(location);
     console.log(`image url is: ${unsplashImageURL}`);
     unsplashImageDiv.style.backgroundImage = `url(${unsplashImageURL})`;
 }
 
 // Display API response on webpage for Popular Locations *** THIS IS EXACTLY THE SAME AS displayWeather()... CAN I MERGE?? ***
-const displayWeatherPopular = async(latitude, longitude) => {
+    const displayWeatherPopular = async(latitude, longitude) => {
     const weatherData = await getWeatherPopular(latitude, longitude);
     const weatherInfoDiv = document.getElementById("weatherInfo");
 
@@ -186,61 +155,76 @@ const displayWeatherPopular = async(latitude, longitude) => {
 
     // Set background image
     const unsplashImageDiv = document.getElementById("unsplashImage");
-    const unsplashImageURL = await getImage();
+    const unsplashImageURL = await getImage(location);
     console.log(`image url is: ${unsplashImageURL}`);
     unsplashImageDiv.style.backgroundImage = `url(${unsplashImageURL})`;
 }
 
-// Event listener for city submissions
-document.getElementById("citySubmit").addEventListener("click", function() {
-    displayWeatherCity();
-});
+// Form validation with reg exp
+const onlyLettersAndSpaces = (string) => {
+    return /^[A-Za-z\s]*$/.test(string);
+}
 
-// Event listener for coordinate submissions
-// document.getElementById("submit").addEventListener("click", function() {
-//     displayWeather();
-// });
+// Event listener for city submissions
+FIND_WEATHER_BUTTON.addEventListener("click", function() {
+    const USER_CITY = document.getElementById("cityName").value;
+    if(onlyLettersAndSpaces(USER_CITY) === true){
+        displayWeatherCity();
+    }
+    else{
+        alert("Enter valid city");
+    }
+});
 
 // Event Listener for popular locations
 const popularLocationClass = document.querySelectorAll(".popularLocations");
 popularLocationClass.forEach(function(element) {
     element.addEventListener('click', function(event) {
-        let latitude, longitude;
+        let latitude, longitude, city;
         if(event.target.id === "getLondonData"){
             latitude = 51.5072;
             longitude = -0.1276;
+            city = "London";
         }
         else if(event.target.id === "getNewYorkData"){
             latitude = 40.7;
             longitude = -74;
+            city = "New York";
         }
         else if(event.target.id === "getParisData"){
             latitude = 48.85;
             longitude = 2.35;
+            city = "Paris";
         }
         else if(event.target.id === "getGdanskData"){
             latitude = 54.35;
             longitude = 18.65;
+            city = "Gdansk";
         }
         displayWeatherPopular(latitude, longitude);
-    })
+    })  
     });
     
 // Clear event listener
 document.getElementById("clear").addEventListener("click", () => {
     const weatherInfoDiv = document.getElementById("weatherInfo");
+    const unsplashImageDiv = document.getElementById("unsplashImage");
+    unsplashImageDiv.style.backgroundImage = "none";
     // Clear all data and reset forms
     while (weatherInfoDiv.firstChild){
         weatherInfoDiv.removeChild(weatherInfoDiv.firstChild);
     }
-    document.getElementById("latitude").value = "";
-    document.getElementById("longitude").value ="";
+    // document.getElementById("latitude").value = "";
+    // document.getElementById("longitude").value ="";
     document.getElementById("cityName").value ="";
 });
 
-// NEED TO ONLY ALLOW TEXT ON CITY FORM
-// ADD RANDOM PICTURE IN RESULTS
-// 
+// COORDINATES FUNCTIONALITY BELOW
+
+// Event listener for coordinate submissions
+// document.getElementById("submit").addEventListener("click", function() {
+//     displayWeather();
+// });
 
 // Retrieve user inputted coordinates
 // const getCoordinates = () => {
@@ -249,6 +233,24 @@ document.getElementById("clear").addEventListener("click", () => {
 //     const coordinates = [latitude, longitude];
 //     return coordinates;
 // };
+
+// Get weather from coordinates
+// const getWeather = async() => {
+//     const arrayOfCoordinates = getCoordinates();
+//     let latitude = arrayOfCoordinates[0];
+//     let longitude = arrayOfCoordinates[1];
+//     const requestParams = `?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+//     const apiCall = `${baseUrl}${requestParams}`;
+//     try {
+//         const response = await fetch(apiCall);
+//         if(response.ok){
+//             const responseJSON = await response.json();
+//             return responseJSON;
+//         }
+//     } catch (error){
+//         console.log(`Error message: ${error}`);
+//     }
+// }
 
 // const displayWeather = async() => {
 //     const weatherData = await getWeather();
