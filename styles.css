@@ -16,7 +16,7 @@ body{
 }
 
 #appContainer{
-    min-width: 650px;
+    flex-wrap: wrap;
 }
 
 #forecastContainer, #coordinatesContainer{
@@ -26,19 +26,11 @@ body{
     min-height: 6rem;
     justify-content: center;
     align-items: center;
-}
-
-#searchBox{
-    background-color: #192225;
-    min-width: 50rem;
-    max-width: 100rem;
-    min-height: 10rem;
-    justify-content: center;
+    min-width: 350px;
 }
 
 #cityName{
     margin: 1rem 1rem 0rem 1rem;
-    min-width: 30rem;
     min-height: 100rem;
 }
 
@@ -104,6 +96,16 @@ body{
     width: 100%;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+/* NATALIA BUTTONS */
+
+#getGdanskData{
+    background-color: rgb(243, 53, 53);
+}
+
+.fa-solid, .fa-heart{
+    color: rgb(243, 53, 53);
 }
 
   /* BUTTON STYLING */

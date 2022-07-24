@@ -5,6 +5,7 @@ const unsplashKey = "jGhREgywG0IpL5j5V2zHDpVRB-6eqJRdZDsOWONRM0M";
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather";
 const units = "metric"; 
 const FIND_WEATHER_BUTTON = document.getElementById("citySubmit");
+const FIND_WEATHER_FORM = document.getElementById("cityName");
 
 // Get random image based on city
 const getImage = async(city) => {
@@ -165,8 +166,8 @@ const onlyLettersAndSpaces = (string) => {
     return /^[A-Za-z\s]*$/.test(string);
 }
 
-// Event listener for city submissions
-FIND_WEATHER_BUTTON.addEventListener("click", function() {
+// Event Handler
+const findWeatherHandler = () => {
     const USER_CITY = document.getElementById("cityName").value;
     if(onlyLettersAndSpaces(USER_CITY) === true){
         displayWeatherCity();
@@ -174,7 +175,26 @@ FIND_WEATHER_BUTTON.addEventListener("click", function() {
     else{
         alert("Enter valid city");
     }
+}
+
+// Event listener for city submissions
+FIND_WEATHER_BUTTON.addEventListener("click", findWeatherHandler);
+FIND_WEATHER_FORM.addEventListener("keydown", (event) => {
+    if(event.key === 'Enter'){
+        event.preventDefault();
+        findWeatherHandler();
+    }
 });
+
+// FIND_WEATHER_BUTTON.addEventListener("click", function() {
+//     const USER_CITY = document.getElementById("cityName").value;
+//     if(onlyLettersAndSpaces(USER_CITY) === true){
+//         displayWeatherCity();
+//     }
+//     else{
+//         alert("Enter valid city");
+//     }
+// });
 
 // Event Listener for popular locations
 const popularLocationClass = document.querySelectorAll(".popularLocations");
